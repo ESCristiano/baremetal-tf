@@ -25,6 +25,8 @@
 #include <irq.h>
 #include <uart.h>
 #include <timer.h>
+#include "bao_test.h"
+
 
 #define TIMER_INTERVAL (TIME_S(1))
 
@@ -92,6 +94,27 @@ void timer_handler(){
     irq_send_ipi(1ull << (get_cpuid() + 1));
 }
 
+
+/*
+    struct str_tmp str_##test __attribute__ (( section(".testframework"))) = { \
+    .test_name = #test, \
+    .func_ptr = func2_##test }; \
+*/
+/*
+MACRO(TEST_X)
+{
+	spin_lock(&print_lock);
+    printf("TEST_X\n");
+     spin_unlock(&print_lock);
+}
+
+MACRO(TEST_Y)
+{
+	spin_lock(&print_lock);
+    printf("TEST_Y\n");
+     spin_unlock(&print_lock);
+}
+*/
 void main(void){
 
     static volatile bool master_done = false;
@@ -100,6 +123,10 @@ void main(void){
         spin_lock(&print_lock);
         printf("Bao bare-metal test guest\n");
         spin_unlock(&print_lock);
+
+
+	    bao_test_entry();
+
 
         irq_set_handler(UART_IRQ_ID, uart_rx_handler);
         irq_set_handler(TIMER_IRQ_ID, timer_handler);
