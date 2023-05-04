@@ -38,6 +38,7 @@ include $(tf_srcs)/bao-test.mk
 SRC_DIRS+=$(tf_srcs) $(tests_srcs)
 C_SRC+=$(BAO_TEST_SRCS)
 INC_DIRS+=$(tf_inc)
+CFLAGS+=$(BAO_TEST_FLAGS)
 
 
 

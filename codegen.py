@@ -76,7 +76,7 @@ def generate_defines(base_dir):
 
     for suite in tests_list.keys():
         for test in tests_list[suite]:
-            code += "\t#ifdef " + test + "||" + suite + "\n"
+            code += "\t#if defined " + test + " || " + suite + "\n"
             code += "\tfunc_bao_test_TBD_" + suite + "_" + test + "();" + "\n"
             code += "\t#endif" + "\n" + "\n"
 
