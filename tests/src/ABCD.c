@@ -1,4 +1,4 @@
-#include "bao_test.h"
+#include "testf.h"
 
 BAO_TEST(ABCD, TEST_A)
 {

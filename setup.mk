@@ -29,17 +29,16 @@ src_dirs+=$(src_dir) $(core_dir) $(platform_dir)
 SRC_DIRS+=$(src_dirs)
 INC_DIRS+=$(addsuffix /inc, $(src_dirs))
 
-#ADDED BY TF
-tf_dir:=$(cur_dir)/bao-tests
-tf_srcs:=$(tf_dir)/src
-tf_inc:=$(tf_dir)/src/inc
-tests_srcs:=$(cur_dir)/tests/src
-include $(tf_srcs)/bao-test.mk
-SRC_DIRS+=$(tf_srcs) $(tests_srcs)
-C_SRC+=$(BAO_TEST_SRCS)
-INC_DIRS+=$(tf_inc)
-CFLAGS+=$(BAO_TEST_FLAGS)
 
+#ADDED BY TF
+TESTF_TESTS_DIR:=$(cur_dir)/tests/src
+TESTF_REPO_DIR:=$(cur_dir)/bao-tests
+
+include $(TESTF_REPO_DIR)/src/bao-test.mk
+SRC_DIRS+=$(TESTF_SRC_DIR) $(TESTF_TESTS_DIR)
+C_SRC+=$(TESTF_SRCS)
+INC_DIRS+=$(TESTF_INC_DIR)
+CFLAGS+=$(TESTF_FLAGS) -ffunction-sections
 
 
 ifeq ($(wildcard $(platform_dir)),)

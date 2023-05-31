@@ -38,7 +38,7 @@ def code_header():
 
 
 def code_includes():
-    code = "#include \"bao_test.h\"" + "\n"
+    code = "#include \"testf.h\"" + "\n"
     code += "#include <stdio.h>" + "\n"
     code += "#include <string.h>" + "\n"
     return code
@@ -77,14 +77,14 @@ def generate_defines(base_dir):
     for suite in tests_list.keys():
         for test in tests_list[suite]:
             code += "\t#if defined " + test + " || " + suite + "\n"
-            code += "\tfunc_bao_test_TBD_" + suite + "_" + test + "();" + "\n"
+            code += "\tentry_test_" + suite + "_" + test + "();" + "\n"
             code += "\t#endif" + "\n" + "\n"
 
     return code
 
 
 def code_functions(base_dir):
-    code = "void bao_test_entry(void)" + "\n"
+    code = "void testf_entry(void)" + "\n"
     code += "{" + "\n"
 
     code += generate_defines(base_dir)
