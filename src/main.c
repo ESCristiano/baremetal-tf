@@ -25,7 +25,7 @@
 #include <irq.h>
 #include <uart.h>
 #include <timer.h>
-#include "bao_test.h"
+#include "testf.h"
 
 
 #define TIMER_INTERVAL (TIME_S(1))
@@ -125,7 +125,7 @@ void main(void){
         spin_unlock(&print_lock);
 
 
-	    bao_test_entry();
+	    testf_entry();
 
 
         irq_set_handler(UART_IRQ_ID, uart_rx_handler);
