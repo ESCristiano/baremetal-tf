@@ -1,0 +1,3 @@
+[submodule "bao-tests"]
+	path = bao-tests
+	url = https://github.com/bao-project/bao-tests.git
